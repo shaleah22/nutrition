@@ -3,157 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition Tracker</title>
+    <title>Protein Tracker</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
         }
 
-        header {
-            background-color: #333;
-            color: white;
+        h1 {
             text-align: center;
-            padding: 1em;
         }
 
-        main {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .food-type {
+            margin-top: 20px;
         }
 
-        button {
+        .food-type h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .food-item {
+            display: block;
             padding: 10px;
             margin-bottom: 10px;
             width: 100%;
             text-align: left;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .food-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        #totals {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
             cursor: pointer;
         }
 
-        .food-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .food-item {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .total {
-            font-weight: bold;
+        button:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Nutrition Tracker</h1>
-</header>
+<h1>Protein Tracker</h1>
 
-<main>
-    <ul class="food-list" id="foodList"></ul>
+<div class="food-type" id="meat">
+    <h2>Meat</h2>
+    <button class="food-item" onclick="addFood('Chicken', 15, 0)">Chicken (15g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('Beef', 26, 0)">Beef (26g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('Turkey', 23, 0)">Turkey (23g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('Steak', 25, 0)">Steak (25g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('Cottage Pie', 25, 2)">Cottage Pie (25g protein, 2g fiber)</button>
+    <!-- Add more meat items as needed -->
+</div>
 
-    <p class="total">Total Protein: <span id="totalProtein">0</span> grams</p>
-    <p class="total">Total Fiber: <span id="totalFiber">0</span> grams</p>
+<div class="food-type" id="dairy">
+    <h2>Dairy</h2>
+    <button class="food-item" onclick="addFood('Milk', 8, 0)">Milk (8g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('Cheese', 7, 0)">Cheese (7g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('Yogurt', 15, 0)">Yogurt (15g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('Hot Chocolate 1% Milk', 8, 2)">Hot Chocolate 1% Milk (8g protein, 2g fiber)</button>
+    <!-- Add more dairy items as needed -->
+</div>
 
+<div class="food-type" id="snacks">
+    <h2>Snacks</h2>
+    <button class="food-item" onclick="addFood('Low Sodium Tortilla Chips 13', 2, 2)">Low Sodium Tortilla Chips 13 (2g protein, 2g fiber)</button>
+    <button class="food-item" onclick="addFood('Hard Boiled Egg', 6, 0)">Hard Boiled Egg (6g protein, 0g fiber)</button>
+    <button class="food-item" onclick="addFood('12 Mini Pretzels', 3, 1)">12 Mini Pretzels (3g protein, 1g fiber)</button>
+    <button class="food-item" onclick="addFood('Low Sodium Potato Chips', 2, 1)">Low Sodium Potato Chips (2g protein, 1g fiber)</button>
+    <button class="food-item" onclick="addFood('Pumpkin Seeds 1/8 cup', 4.5, 1)">Pumpkin Seeds 1/8 cup (4.5g protein, 1g fiber)</button>
+    
+    <!-- Add more snacks as needed -->
+</div>
+
+<div class="food-type" id="grains">
+    <h2>Grains</h2>
+    <button class="food-item" onclick="addFood('Ezekiel Bread One Slice', 5, 3)">Ezekiel Bread One Slice (5g protein, 3g fiber)</button>
+    <button class="food-item" onclick="addFood('Bowl of Oatmeal with Chia Seeds and Milk', 9.5, 6)">Bowl of Oatmeal with Chia Seeds and Milk (9.5g protein, 6g fiber)</button>
+    <button class="food-item" onclick="addFood('Banana Bread Slice', 3, 1)">Banana Bread Slice (3g protein, 1g fiber)</button>
+    <button class="food-item" onclick="addFood('Triple Chocolate Muffin', 2, 1)">Triple Chocolate Muffin (2g protein, 1g fiber)</button>
+    <button class="food-item" onclick="addFood('Croissant', 4.67, 1.48)">Croissant (4.67g protein, 1.48g fiber)</button>
+    <!-- Add more grain items as needed -->
+</div>
+
+
+
+<div class="food-type" id="fruits-vegetables">
+    <h2>Fruits and Vegetables</h2>
+    <button class="food-item" onclick="addFood('Banana', 1.3, 3.1)">Banana (1.3g protein, 3.1g fiber)</button>
+    <button class="food-item" onclick="addFood('Blueberries 1 cup', 1.07, 3.48)">Blueberries 1 cup (1.07g protein, 3.48g fiber)</button>
+    <button class="food-item" onclick="addFood('Ten red grapes', 0.4, 0.4)">Ten red grapes (0.4g protein, 0.4g fiber)</button>
+    <!-- Add more fruits and vegetables as needed -->
+</div>
+
+<div class="food-type" id="nuts">
+    <h2>Nuts</h2>
+    <!-- Add more nut items as needed -->
+    <button class="food-item" onclick="addFood('Simply Trail Mix 1/4 cup', 5, 2)">Simply Trail Mix 1/4 cup (5g protein, 2g fiber)</button>
+</div>
+
+<!-- Add more food types and items as needed -->
+
+<div id="totals">
+    <p>Total Protein: <span id="totalProtein">0</span> grams</p>
+    <p>Total Fiber: <span id="totalFiber">0</span> grams</p>
     <button onclick="resetTotals()">Reset Totals</button>
-</main>
+</div>
 
 <script>
-    // Load stored data on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        loadStoredData();
-    });
+    let totalProtein = parseInt(localStorage.getItem('totalProtein')) || 0;
+    let totalFiber = parseInt(localStorage.getItem('totalFiber')) || 0;
 
-    let totalProtein = 0;
-    let totalFiber = 0;
+    updateTotals();
 
-    function addFood(foodName, protein, fiber) {
-        const foodList = document.getElementById('foodList');
-        const listItem = document.createElement('li');
-        listItem.className = 'food-item';
-        listItem.innerHTML = `
-            <button onclick="updateTotals(${protein}, ${fiber})">
-                ${foodName} - Protein: ${protein}g, Fiber: ${fiber}g
-            </button>
-        `;
-        foodList.appendChild(listItem);
-
-        // Save data to localStorage
-        saveData();
-    }
-
-    function updateTotals(protein, fiber) {
+    function addFood(name, protein, fiber) {
         totalProtein += protein;
         totalFiber += fiber;
 
-        document.getElementById('totalProtein').innerText = totalProtein;
-        document.getElementById('totalFiber').innerText = totalFiber;
+        updateTotals();
 
-        // Save data to localStorage
-        saveData();
+        // You can add additional logic here to store the food item information if needed
     }
 
-    function saveData() {
+    function updateTotals() {
+        document.getElementById('totalProtein').textContent = totalProtein;
+        document.getElementById('totalFiber').textContent = totalFiber;
+
         // Save totals to localStorage
         localStorage.setItem('totalProtein', totalProtein);
         localStorage.setItem('totalFiber', totalFiber);
     }
 
-    function loadStoredData() {
-        // Load totals from localStorage
-        const storedProtein = localStorage.getItem('totalProtein');
-        const storedFiber = localStorage.getItem('totalFiber');
-
-        if (storedProtein !== null && storedFiber !== null) {
-            totalProtein = parseFloat(storedProtein);
-            totalFiber = parseFloat(storedFiber);
-
-            document.getElementById('totalProtein').innerText = totalProtein;
-            document.getElementById('totalFiber').innerText = totalFiber;
-        }
-    }
-
     function resetTotals() {
-        // Reset totals to zero
         totalProtein = 0;
         totalFiber = 0;
 
-        document.getElementById('totalProtein').innerText = totalProtein;
-        document.getElementById('totalFiber').innerText = totalFiber;
-
-        // Clear stored data in localStorage
-        localStorage.removeItem('totalProtein');
-        localStorage.removeItem('totalFiber');
+        updateTotals();
     }
-</script>
-
-<!-- Add your food items using the addFood function -->
-<script>
-    addFood('Milk', 8, 0);
-    addFood('Hard Boiled Egg', 6, 0);
-    addFood('Blueberries 1 cup', 1.07, 3.48);
-    addFood('Low Sodium Potato Chips', 2, 1);
-    addFood('Yogurt', 15, 0);
-    addFood('12 Mini Pretzels', 3, 1);
-    addFood('Three Ounces Deck of Cards Beef', 22, 0);
-    addFood('Hot Chocolate 1% Milk', 8, 2);
-    addFood('Oatmeal', 5, 3);
-    addFood('Pumpkin Seeds 1/8 cup', 4.5, 1);
-    addFood('Protein 1 gram', 1, 0);
-    addFood('Fiber 1 gram', 0, 1);
-    // Add more food items as needed
 </script>
 
 </body>
