@@ -60,20 +60,26 @@
 </head>
 <body>
 
+<div id="totals">
+    <p>Total Protein: <span id="totalProtein">0</span> grams</p>
+    <p>Total Fiber: <span id="totalFiber">0</span> grams</p>
+    <button onclick="resetTotals()">Reset Totals</button>
+</div>
+
 <h1>Protein Tracker</h1>
 
 <div class="food-type" id="Breakfast">
     <h2>Breakfast</h2>
     <button class="food-item" onclick="addFood('Two Scrambled Eggs With Six Roasted Cherry Tomatoes & Bowl of Oatmeal with Chia Seeds and Milk', 23.5, 8)">Two Scrambled Eggs With Six Roasted Cherry Tomatoes AND Bowl of Oatmeal with Chia Seeds and Milk (23.5g protein, 8g fiber)</button>
-    
-     <!-- Add more meat items as needed -->
+    <button class="food-item" onclick="addFood('Banana Bread Slice', 3, 1)">Banana Bread Slice (3g protein, 1g fiber)</button>
+    <button class="food-item" onclick="addFood('Triple Chocolate Muffin', 2, 1)">Triple Chocolate Muffin (2g protein, 1g fiber)</button>
+    <!-- Add more breakfast items as needed -->
 </div>
 
 <div class="food-type" id="Lunch">
     <h2>Lunch</h2>
     <button class="food-item" onclick="addFood('Cottage Pie & Blueberries', 26.07, 5.48)">Cottage Pie & Blueberries (26.07 g protein, 5.48g fiber)</button>
-    
-     <!-- Add more meat items as needed -->
+    <!-- Add more lunch items as needed -->
 </div>
 
 <div class="food-type" id="meat">
@@ -102,7 +108,6 @@
     <button class="food-item" onclick="addFood('12 Mini Pretzels', 3, 1)">12 Mini Pretzels (3g protein, 1g fiber)</button>
     <button class="food-item" onclick="addFood('Low Sodium Potato Chips', 2, 1)">Low Sodium Potato Chips (2g protein, 1g fiber)</button>
     <button class="food-item" onclick="addFood('Pumpkin Seeds 1/8 cup', 4.5, 1)">Pumpkin Seeds 1/8 cup (4.5g protein, 1g fiber)</button>
-    
     <!-- Add more snacks as needed -->
 </div>
 
@@ -110,13 +115,8 @@
     <h2>Grains</h2>
     <button class="food-item" onclick="addFood('Ezekiel Bread One Slice', 5, 3)">Ezekiel Bread One Slice (5g protein, 3g fiber)</button>
     <button class="food-item" onclick="addFood('Bowl of Oatmeal with Chia Seeds and Milk', 9.5, 6)">Bowl of Oatmeal with Chia Seeds and Milk (9.5g protein, 6g fiber)</button>
-    <button class="food-item" onclick="addFood('Banana Bread Slice', 3, 1)">Banana Bread Slice (3g protein, 1g fiber)</button>
-    <button class="food-item" onclick="addFood('Triple Chocolate Muffin', 2, 1)">Triple Chocolate Muffin (2g protein, 1g fiber)</button>
-    <button class="food-item" onclick="addFood('Croissant', 4.67, 1.48)">Croissant (4.67g protein, 1.48g fiber)</button>
     <!-- Add more grain items as needed -->
 </div>
-
-
 
 <div class="food-type" id="fruits-vegetables">
     <h2>Fruits and Vegetables</h2>
@@ -133,12 +133,6 @@
 </div>
 
 <!-- Add more food types and items as needed -->
-
-<div id="totals">
-    <p>Total Protein: <span id="totalProtein">0</span> grams</p>
-    <p>Total Fiber: <span id="totalFiber">0</span> grams</p>
-    <button onclick="resetTotals()">Reset Totals</button>
-</div>
 
 <script>
     let totalProtein = parseInt(localStorage.getItem('totalProtein')) || 0;
